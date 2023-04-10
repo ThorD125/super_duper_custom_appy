@@ -1,14 +1,15 @@
 package com.ther.custom
 
 import android.hardware.Sensor
+import android.print.PrintAttributes.Margins
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
@@ -58,7 +59,11 @@ fun switchs(name: String, fl: Float): Boolean{
 
 @Composable
 fun accordion(buttonText: String,doingFun: @Composable () -> @Composable Unit) {
-    Column{
+    Column(
+
+        Modifier.border(1.dp, MaterialTheme.colors.secondary, MaterialTheme.shapes.medium).fillMaxWidth(),
+
+    ){
         val height = remember { mutableStateOf(Modifier.height(0.dp)) }
         buttons(buttonText) {
             if (height.value == Modifier.height(0.dp)) {
